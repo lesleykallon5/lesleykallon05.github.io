@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --panel: #111827;
+            --text: #e2e8f0;
+            --muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-strong: #0ea5e9;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: Inter, system-ui, sans-serif;
+            background: radial-gradient(circle at top, rgba(56,189,248,.15), transparent 35%),
+                        linear-gradient(180deg, #020617 0%, #0f172a 100%);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        header, main, footer {
+            width: min(1080px, calc(100% - 32px));
+            margin: 0 auto;
+        }
+        header {
+            padding: 32px 0 16px;
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+        .nav__brand {
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+        .nav__links {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+        .nav__links a {
+            color: var(--muted);
+            text-decoration: none;
+            transition: color .2s ease;
+        }
+        .nav__links a:hover {
+            color: var(--text);
+        }
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            align-items: center;
+            padding: 48px 0 64px;
+        }
+        .hero__copy {
+            max-width: 640px;
+        }
+        .hero__title {
+            font-size: clamp(2.5rem, 4vw, 4rem);
+            margin: 0 0 16px;
+            line-height: 1.02;
+        }
+        .hero__description {
+            margin: 0 0 24px;
+            color: var(--muted);
+            font-size: 1.05rem;
+        }
+        .hero__actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .button, .button--secondary {
+            border: none;
+            border-radius: 999px;
+            padding: 14px 24px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform .2s ease, background .2s ease;
+        }
+        .button {
+            background: var(--accent);
+            color: #0f172a;
+        }
+        .button:hover {
+            transform: translateY(-2px);
+            background: var(--accent-strong);
+        }
+        .button--secondary {
+            background: rgba(148, 163, 184, 0.12);
+            color: var(--text);
+        }
+        .hero__image {
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 24px 80px rgba(15, 23, 42, 0.35);
+        }
+        .hero__image img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            aspect-ratio: 4 / 3;
+        }
+        section {
+            margin-bottom: 64px;
+        }
+        .section__title {
+            font-size: 1.75rem;
+            margin-bottom: 18px;
+        }
+        .card-grid {
+            display: grid;
+            gap: 20px;
+        }
+        .card {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(148, 163, 184, 0.12);
+            border-radius: 24px;
+            padding: 24px;
+        }
+        .card h3 {
+            margin: 0 0 10px;
+            font-size: 1.2rem;
+        }
+        .card p {
+            margin: 0;
+            color: var(--muted);
+        }
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 14px;
+        }
+        .skill {
+            background: rgba(56, 189, 248, 0.12);
+            color: var(--text);
+            padding: 16px;
+            border-radius: 16px;
+            font-weight: 600;
+        }
+        .contact-card {
+            display: grid;
+            gap: 20px;
+            background: rgba(15, 23, 42, 0.92);
+            border: 1px solid rgba(148, 163, 184, 0.14);
+            padding: 32px;
+            border-radius: 28px;
+        }
+        .contact-card label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            color: var(--muted);
+        }
+        .contact-card input,
+        .contact-card textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 14px;
+            border: 1px solid rgba(148, 163, 184, 0.18);
+            background: #111827;
+            color: var(--text);
+            outline: none;
+        }
+        .contact-card textarea {
+            resize: vertical;
+            min-height: 160px;
+        }
+        .contact-card button {
+            width: fit-content;
+        }
+        footer {
+            padding: 24px 0 48px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+        @media (min-width: 900px) {
+            .hero {
+                grid-template-columns: 1.1fr 0.9fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav">
+            <div class="nav__brand">IamRichTheCreativeMind</div>
+            <nav class="nav__links">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero__copy">
+                <p style="color: var(--accent); text-transform: uppercase; letter-spacing: .18em; font-size: .85rem; margin: 0 0 16px;">Full-stack web developer</p>
+                <h1 class="hero__title">Building fast, modern websites with strong design and real business impact.</h1>
+                <p class="hero__description">I create accessible, responsive portfolio sites, landing pages, and web apps using HTML, CSS, and JavaScript. My work is clean, user-focused, and built for performance.</p>
+                <div class="hero__actions">
+                    <a class="button" href="#contact">Work with me</a>
+                    <a class="button button--secondary" href="#projects">View projects</a>
+                </div>
+            </div>
+            <div class="hero__image">
+                <img src="IMAGE/lbk.jpg" alt="Portfolio preview image" loading="lazy"  width="10" >
+            </div>
+        </section>
+
+        <section id="about">
+            <h2 class="section__title">About me</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Who I am</h3>
+                    <p>I am a developer who enjoys turning ideas into polished digital products. I focus on responsive layouts, intuitive UI, and performance that feels fast on every device.</p>
+                </div>
+                <div class="card">
+                    <h3>What I do</h3>
+                    <p>I design and build websites, create landing pages, and develop interactive front-end experiences with strong visual clarity and easy navigation.</p>
+                </div>
+                <div class="card">
+                    <h3>How I work</h3>
+                    <p>Communication, planning, and iteration are key. I deliver polished prototypes, refine them with feedback, and ship sites that are ready for users.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2 class="section__title">Featured projects</h2>
+            <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+                <article class="card">
+                    <h3>Portfolio Website</h3>
+                    <p>A clean, mobile-friendly portfolio built with HTML and CSS. Includes project highlights, about section, and a contact form.</p>
+                </article>
+                <article class="card">
+                    <h3>Business Landing Page</h3>
+                    <p>Responsive landing page with strong calls to action, feature sections, and branded styling designed for conversion.</p>
+                </article>
+                <article class="card">
+                    <h3>Interactive Web App</h3>
+                    <p>A lightweight front-end application with smooth animations, accessible navigation, and consistent performance across browsers.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2 class="section__title">Skills</h2>
+            <div class="skills">
+                <span class="skill">HTML</span>
+                <span class="skill">CSS</span>
+                <span class="skill">JavaScript</span>
+                <span class="skill">Responsive Design</span>
+                <span class="skill">Web Accessibility</span>
+                <span class="skill">UI/UX</span>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2 class="section__title">Contact</h2>
+            <div class="contact-card">
+                <p style="margin: 0 0 12px; color: var(--muted);">Ready to start a project or want to learn more? Send a message and I’ll get back to you shortly.</p>
+                <label for="name">Name</label>
+                <input id="name" type="text" placeholder="Your name">
+                <label for="email">Email</label>
+                <input id="email" type="email" placeholder="you@example.com">
+                <label for="message">Message</label>
+                <textarea id="message" placeholder="Tell me about your project"></textarea>
+                <button class="button" type="submit">Send message</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 IamRichTheCreativeMind. Built with HTML and CSS.</p>
+    </footer>
+</body>
+</html>
